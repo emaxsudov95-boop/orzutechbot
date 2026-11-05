@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: orzutech-bot
+    env: python
+    region: frankfurt
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python bot.py"
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        value: "7983616924"
+      - key: PROVIDER_API_URL
+        sync: false
+      - key: PROVIDER_API_KEY
+        sync: false
+      - key: CARD_1_NUMBER
+        value: "4916 9903 2289 2321"
+      - key: CARD_1_NAME
+        value: "Visa (Uzum Bank)"
+      - key: CARD_2_NUMBER
+        value: "4790 7400 0008 4837"
+      - key: CARD_2_NAME
+        value: "Visa (Kapitalbank)"
+      - key: DEFAULT_CARD_NUMBER
+        value: "4916 9903 2289 2321"
+      - key: PORT
+        value: "8080"
