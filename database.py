@@ -9,6 +9,8 @@ from config import (
     CARD_1_NAME,
     CARD_2_NUMBER,
     CARD_2_NAME,
+    CARD_3_NUMBER,
+    CARD_3_NAME,
     ADMIN_IDS,
     SUPPORT_USERNAME,
     PROVIDER_API_URL,
@@ -150,6 +152,8 @@ async def init_db():
             ("card_1_name", CARD_1_NAME),
             ("card_2_number", CARD_2_NUMBER),
             ("card_2_name", CARD_2_NAME),
+            ("card_3_number", CARD_3_NUMBER),
+            ("card_3_name", CARD_3_NAME),
             ("support_username", SUPPORT_USERNAME),
             ("provider_api_url", PROVIDER_API_URL),
             ("provider_api_key", PROVIDER_API_KEY),
@@ -159,6 +163,10 @@ async def init_db():
             await db.execute("""
                 INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)
             """, (key, val))
+        # Asosiy kartani yangilash
+        await db.execute("UPDATE settings SET value = ? WHERE key = 'card_1_number'", (CARD_1_NUMBER,))
+        await db.execute("UPDATE settings SET value = ? WHERE key = 'card_1_name'", (CARD_1_NAME,))
+        await db.execute("UPDATE settings SET value = ? WHERE key = 'card_number'", (CARD_1_NUMBER,))
         await db.commit()
     logger.info("Database muvaffaqiyatli ishga tushirildi.")
 

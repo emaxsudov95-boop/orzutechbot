@@ -31,6 +31,8 @@ from config import (
     CARD_1_NAME,
     CARD_2_NUMBER,
     CARD_2_NAME,
+    CARD_3_NUMBER,
+    CARD_3_NAME,
     DEFAULT_CARD_HOLDER
 )
 
@@ -108,16 +110,20 @@ async def process_deposit_amount(message: Message, state: FSMContext):
     card1_name = await get_setting("card_1_name", CARD_1_NAME)
     card2_num = await get_setting("card_2_number", CARD_2_NUMBER)
     card2_name = await get_setting("card_2_name", CARD_2_NAME)
+    card3_num = await get_setting("card_3_number", CARD_3_NUMBER)
+    card3_name = await get_setting("card_3_name", CARD_3_NAME)
     card_holder = await get_setting("card_holder", DEFAULT_CARD_HOLDER)
     holder_text = f"👤 Karta egasi: <b>{card_holder}</b>\n" if card_holder else ""
 
     cards_text = ""
     if card1_num:
-        cards_text += f"🔹 <b>{card1_name or 'Visa karta'}:</b>\n💳 Raqam: <code>{card1_num}</code> (nusxa olish uchun ustiga bosing)\n{holder_text}\n"
+        cards_text += f"🔹 <b>{card1_name or '1-karta'}:</b>\n💳 Raqam: <code>{card1_num}</code> (nusxa olish uchun ustiga bosing)\n{holder_text}\n"
     if card2_num:
         cards_text += f"🔹 <b>{card2_name or '2-karta'}:</b>\n💳 Raqam: <code>{card2_num}</code> (nusxa olish uchun ustiga bosing)\n\n"
+    if card3_num:
+        cards_text += f"🔹 <b>{card3_name or '3-karta'}:</b>\n💳 Raqam: <code>{card3_num}</code> (nusxa olish uchun ustiga bosing)\n\n"
 
-    target_text = "quyidagi kartalardan biriga" if (card1_num and card2_num) else "quyidagi <b>Visa</b> kartasiga"
+    target_text = "quyidagi kartalardan biriga" if (card2_num or card3_num) else "quyidagi kartaga"
 
     instruction = (
         f"💳 <b>To'lov ma'lumotlari</b>\n\n"

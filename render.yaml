@@ -16,14 +16,18 @@ services:
       - key: PROVIDER_API_KEY
         sync: false
       - key: CARD_1_NUMBER
-        value: "4916 9903 2289 2321"
+        value: "4023 0610 0566 2876"
       - key: CARD_1_NAME
-        value: "Visa (Uzum Bank)"
+        value: "Asosiy karta (Visa)"
       - key: CARD_2_NUMBER
-        value: "4790 7400 0008 4837"
+        value: "4916 9903 2289 2321"
       - key: CARD_2_NAME
+        value: "Visa (Uzum Bank)"
+      - key: CARD_3_NUMBER
+        value: "4790 7400 0008 4837"
+      - key: CARD_3_NAME
         value: "Visa (Kapitalbank)"
       - key: DEFAULT_CARD_NUMBER
-        value: "4916 9903 2289 2321"
+        value: "4023 0610 0566 2876"
       - key: PORT
         value: "8080"
